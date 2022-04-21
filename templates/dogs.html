@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Our Dogs</h1>
+    <br/>
+    <form action="/dogs" METHOD="POST">
+        <input type="text" placeholder="Name" name="name">
+        <input type="text" placeholder="Breed" breed="breed">
+        <input type="datetime" value="datetime">
+        <input type="submit" value="Add Dog" class="btn btn-secondary">
+    </form>
+    <br/>
+    <table class="table table-hover table-bordered table-striped">
+    {% for dogs in dog %}
+        {{ dogs.name }}
+        <!-- <tr>
+            <td>
+            <a href="/item/{{dogs.id}}" class="btn btn-outline-secondary btn-sm">{{ stuffs.name }}</a>
+            <a href="/update/{{stuffs.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
+            <a href="/delete/{{stuffs.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
+            </td>
+        </tr> -->
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
