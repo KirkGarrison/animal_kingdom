@@ -8,20 +8,21 @@
     <form action="/dogs" METHOD="POST">
         <input type="text" placeholder="Name" name="name">
         <input type="text" placeholder="Breed" breed="breed">
-        <input type="datetime" value="datetime">
         <input type="submit" value="Add Dog" class="btn btn-secondary">
     </form>
     <br/>
     <table class="table table-hover table-bordered table-striped">
-    {% for dogs in dog %}
-        {{ dogs.name }}
-        <!-- <tr>
+    <h4>
+    {% for dog in dogs %}
+        {{ dog.name }}
+    </h4>
+        <tr>
             <td>
-            <a href="/item/{{dogs.id}}" class="btn btn-outline-secondary btn-sm">{{ stuffs.name }}</a>
-            <a href="/update/{{stuffs.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
-            <a href="/delete/{{stuffs.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
+            <a href="/dog/{{dog.id}}" class="btn btn-outline-secondary btn-sm">{{ dog.name }}</a>
+            <a href="/update/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
+            <a href="/delete/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
             </td>
-        </tr> -->
+        </tr>
     {% endfor %}
 </table>
 </div>
