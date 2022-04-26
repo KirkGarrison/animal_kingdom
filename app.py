@@ -30,7 +30,7 @@ def dogs():
         try:
             db.session.add(new_dog)
             db.session.commit()
-            return render_template("dogs.html", title=title, dogs=dogs)
+            return render_template("dogs.html", title=title)
         except: 
             return "There was an error adding this dog..."
     else:
@@ -41,16 +41,18 @@ def dogs():
 @app.route('/dog/<int:id>', methods=['POST', 'GET', 'DELETE'])
 def dog_viewer(id):
     dog_view = Dogs.query.get_or_404(id)
+    title = "our dogs"
     if request.method == "POST":
-        dog_view.name = request.form['name']
-        dog_view.breed = request.form['breed']
+        dog_view_name = request.form['name']
+        dog_view_breed = request.form['breed']
+        updated_dog = Dogs(name=dog_view_name, breed=dog_view_breed)
         try:
+            db.session.add(updated_dog)
             db.session.commit()
             return render_template("dogs.html", title=title)
         except:
             return "There was a problem updating this dog"
     elif request.method == "DELETE":
-        title = "our dogs"
         try:
             db.session.delete(dog_view)
             db.session.commit()
@@ -82,10 +84,10 @@ def update(id):
         dog_to_update.name = request.form['name']
         dog_to_update.breed = request.form['breed']
         try:
+            db.session.update(dog_to_update)
             db.session.commit()
-            return render_template("/dogs.html", title=title)
+            return render_template("dogs.html", title=title)
         except:
             return "There was a problem updating this dog"
     else:
         return render_template('dogs.html', title=title)
-

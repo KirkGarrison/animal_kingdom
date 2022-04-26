@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Our Dogs</h1>
     <br/>
-    <form action="/dogs" METHOD="POST">
+    <form action="dogs" METHOD="POST">
         <input type="text" placeholder="Name" name="name">
         <input type="text" placeholder="Breed" name="breed">
         <input type="submit" value="Add Dog" class="btn btn-secondary">
@@ -14,11 +14,12 @@
     <table class="table table-hover table-bordered table-striped">
     <h4>
     {% for dog in dogs %}
-        {{ dog.name }}
     </h4>
         <tr>
             <td>
+            {{dog.id}}
             <a href="/dog/{{dog.id}}" class="btn btn-outline-secondary btn-sm">{{ dog.name }}</a>
+            {{dog.breed}}
             <a href="/update/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
             <a href="/delete/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
             </td>
