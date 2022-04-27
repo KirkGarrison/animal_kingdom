@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+{% block title %}Update Dog{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Update {{dog.name}}</h1>
+    <br/>
+    <form action="/update/{{dog_to_update.id}}" METHOD="POST">
+        <input type="text" placeholder="{{dog_to_update.name}}" name="name" value="{{dog_to_update.name}}">
+        <input type="text" placeholder={{dog_to_update.breed}} name="breed" value="{{dog_to_update.breed}}">
+        <input type="submit" value="Update Dog" class="btn btn-secondary">
+    </form>
+</div>
+{% endblock %}
