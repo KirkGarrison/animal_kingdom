@@ -12,7 +12,6 @@
     </form>
     <br/>
     <table class="table table-hover table-bordered table-striped">
-    <h4>
     {% for dog in dogs %}
     </h4>
         <tr>
@@ -20,11 +19,20 @@
             {{dog.id}}
             <a href="/dog/{{dog.id}}" class="btn btn-outline-secondary btn-sm">{{ dog.name }}</a>
             {{dog.breed}}
-            <a href="/update/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
-            <a href="/delete/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Delete</a>
+            <a href="/dog/{{dog.id}}" class="btn btn-outline-secondary btn-sm">Update</a>
+            <a href="javascript:deleteDog({{dog.id}})" class="btn btn-outline-secondary btn-sm">Delete</a>
             </td>
         </tr>
     {% endfor %}
 </table>
 </div>
+<script lang="javascript">
+    function deleteDog(dog_id){
+        //some XHR request goes here.
+        let request = XMLHttpRequest('DELETE', `/dogs/${dog_id}`);
+        if(request['deleted']){
+            alert('Dog was deleted');
+        }
+    }
+</script> 
 {% endblock %}
