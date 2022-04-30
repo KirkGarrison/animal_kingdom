@@ -88,3 +88,5 @@ def update_dog(get_form_data):
         except:
             print('There was a problem updating this dog')
             return redirect('/dogs')
+
+app.run()
